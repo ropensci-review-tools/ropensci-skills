@@ -49,5 +49,7 @@ files:
       pages:
         - url: https://devguide.ropensci.org/softwarereview_editor.html
           source: softwarereview_editor.Rmd
+        - url: https://devguide.ropensci.org/editortemplate.html
+          source: editortemplate.Rmd
         - url: https://devguide.ropensci.org/bot_cheatsheet.html
           source: bot_cheatsheet.Rmd

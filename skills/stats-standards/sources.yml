@@ -1,0 +1,30 @@
+# Provenance + drift-detection manifest for the `stats-standards` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+#
+# Note: the skill condenses the standard *categories* (standards.Rmd). The
+# detailed per-category standards live under standards/*.Rmd (general, bayesian,
+# regression, …) — add those paths here if/when the skill starts condensing the
+# individual standards rather than just the category overview.
+
+skill: stats-standards
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/statistical-software-review-book
+      ref: ec278d3a160de90179cac68ad93c976a65ef1b65
+      pages:
+        - url: https://stats-devguide.ropensci.org/standards.html
+          source: standards.Rmd
+
+  - path: references/standards-categories.md
+    kind: prose
+    upstream:
+      repo: ropensci/statistical-software-review-book
+      ref: ec278d3a160de90179cac68ad93c976a65ef1b65
+      pages:
+        - url: https://stats-devguide.ropensci.org/standards.html
+          source: standards.Rmd

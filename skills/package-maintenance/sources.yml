@@ -1,0 +1,42 @@
+# Provenance + drift-detection manifest for the `package-maintenance` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+
+skill: package-maintenance
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/maintenance_collaboration.html
+          source: maintenance_collaboration.Rmd
+        - url: https://devguide.ropensci.org/maintenance_github_grooming.html
+          source: maintenance_github_grooming.Rmd
+        - url: https://devguide.ropensci.org/maintenance_changing_maintainers.html
+          source: maintenance_changing_maintainers.Rmd
+        - url: https://devguide.ropensci.org/maintenance_evolution.html
+          source: maintenance_evolution.Rmd
+        - url: https://devguide.ropensci.org/maintenance_curation.html
+          source: maintenance_curation.Rmd
+
+  - path: references/lifecycle-evolution.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/maintenance_evolution.html
+          source: maintenance_evolution.Rmd
+
+  - path: references/archiving.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/maintenance_evolution.html
+          source: maintenance_evolution.Rmd
