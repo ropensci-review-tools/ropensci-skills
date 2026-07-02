@@ -1,0 +1,58 @@
+name: coverage-audit
+
+# The inverse of drift-detect: surface upstream manual pages that NO skill covers
+# yet, so brand-new pages/chapters get evaluated for incorporation instead of
+# being silently ignored. Detection only — a human triages each hit (incorporate
+# into a skill, or record it as out-of-scope in tools/coverage.yml).
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # monthly, 1st at 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: coverage-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::yaml
+            any::gh
+            any::cli
+            any::glue
+
+      - name: Audit skill coverage of the upstream manuals
+        id: audit
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: Rscript tools/coverage-audit.R
+        # writes coverage-report.md and sets coverage=true|false in $GITHUB_OUTPUT
+
+      - name: Open or update the coverage tracking issue
+        if: steps.audit.outputs.coverage == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          title="Skill coverage: upstream pages awaiting triage"
+          existing=$(gh issue list --state open --label coverage --json number \
+            --jq '.[0].number' || true)
+          if [ -n "${existing:-}" ]; then
+            gh issue edit "$existing" --body-file coverage-report.md
+          else
+            gh issue create --title "$title" --label coverage --body-file coverage-report.md
+          fi
