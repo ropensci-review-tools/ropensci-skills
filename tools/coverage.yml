@@ -1,0 +1,56 @@
+# Coverage ledger for the manuals-sync tooling (issue #4).
+#
+# drift-detect.R answers "did a page the skills ALREADY cite change?".
+# coverage-audit.R answers the inverse: "has a NEW page/chapter appeared upstream
+# that no skill covers yet?" — the case direct source references can't catch.
+#
+# Invariant it enforces: every upstream content page is either
+#   (a) referenced by some skills/*/sources.yml manifest  -> incorporated, or
+#   (b) listed under out_of_scope below                   -> deliberately skipped.
+# The audit reports anything that is neither — a page nobody has decided about.
+#
+# Triage when a page surfaces: EITHER wire it into a manifest (incorporate it)
+# OR add it to out_of_scope with a one-line reason (skip it). Either silences it.
+#
+# Matching rules:
+#   include  - matched against the FULL path; `*` = one path segment.
+#              "*.Rmd" is repo-root only; "standards/*.Rmd" is that dir.
+#   exclude  - patterns WITHOUT a slash match the BASENAME anywhere
+#              (so "*.es.Rmd", "index.Rmd"); "dir/**" excludes a whole subtree.
+
+repos:
+  - repo: ropensci/dev_guide
+    include: ["*.Rmd"]
+    exclude: # book scaffolding + translations — never guidance to condense
+      - "*.es.Rmd"
+      - "*.pt.Rmd"
+      - "index.Rmd"
+      - "preface.Rmd"
+      - "redirect.Rmd"
+      - "booknews.Rmd"
+      - "bookreleaseissue.Rmd"
+    out_of_scope: []
+    # example once triaged:
+    #   - path: maintenance_contributing.Rmd
+    #     reason: contributor onboarding, out of scope for the authoring skills
+
+  - repo: ropensci/statistical-software-review-book
+    include: ["*.Rmd", "standards/*.Rmd"]
+    exclude:
+      - "*.es.Rmd"
+      - "*.pt.Rmd"
+      - "scripts/**"
+      - "index.Rmd"
+      - "preface.Rmd"
+      - "appendix.Rmd"
+      - "overview.Rmd"
+      - "reading.Rmd"
+    out_of_scope: []
+
+  - repo: ropensci-org/blog-guidance
+    include: ["*.Rmd"]
+    exclude:
+      - "*.es.Rmd"
+      - "*.pt.Rmd"
+      - "index.Rmd"
+    out_of_scope: []
