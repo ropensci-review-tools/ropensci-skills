@@ -1,0 +1,43 @@
+# Provenance + drift-detection manifest for the `peer-review-author` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+
+skill: peer-review-author
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/softwarereview_author.html
+          source: softwarereview_author.Rmd
+        - url: https://devguide.ropensci.org/softwarereview_intro.html
+          source: softwarereview_intro.Rmd
+        - url: https://devguide.ropensci.org/softwarereview_policies.html
+          source: softwarereview_policies.Rmd
+
+  - path: references/pkgcheck-and-bot.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/bot_cheatsheet.html
+          source: bot_cheatsheet.Rmd
+        - url: https://devguide.ropensci.org/softwarereview_author.html
+          source: softwarereview_author.Rmd
+
+  - path: references/scope-and-policies.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/softwarereview_policies.html
+          source: softwarereview_policies.Rmd

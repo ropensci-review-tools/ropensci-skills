@@ -1,0 +1,19 @@
+# Provenance + drift-detection manifest for the `package-release` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+
+skill: package-release
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/maintenance_releases.html
+          source: maintenance_releases.Rmd
+        - url: https://devguide.ropensci.org/maintenance_marketing.html
+          source: maintenance_marketing.Rmd

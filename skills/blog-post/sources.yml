@@ -1,0 +1,35 @@
+# Provenance + drift-detection manifest for the `blog-post` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+
+skill: blog-post
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci-org/blog-guidance
+      track: main # no releases/tags upstream; advisory + human-triage only
+      ref: 0ab8de392d686f9535f6536884be52980124b451
+      pages:
+        - url: https://blogguide.ropensci.org/authorcontent.html
+          source: authorcontent.Rmd
+        - url: https://blogguide.ropensci.org/authortechnical.html
+          source: authortechnical.Rmd
+        - url: https://blogguide.ropensci.org/authorreview.html
+          source: authorreview.Rmd
+        - url: https://blogguide.ropensci.org/authorpromote.html
+          source: authorpromote.Rmd
+
+  - path: references/technical-and-yaml.md
+    kind: prose
+    upstream:
+      repo: ropensci-org/blog-guidance
+      track: main # no releases/tags upstream; advisory + human-triage only
+      ref: 0ab8de392d686f9535f6536884be52980124b451
+      pages:
+        - url: https://blogguide.ropensci.org/authortechnical.html
+          source: authortechnical.Rmd
+        - url: https://blogguide.ropensci.org/authorpromote.html
+          source: authorpromote.Rmd

@@ -1,0 +1,63 @@
+# Provenance + drift-detection manifest for the `package-standards` skill.
+# Schema + field docs: see skills/package-review/sources.yml.
+# ref = last upstream commit this file is known to reflect (baseline = source
+# HEAD at 2026-07-02; a human sync pass should confirm before trusting it).
+
+skill: package-standards
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/pkg_building.html
+          source: pkg_building.Rmd
+        - url: https://devguide.ropensci.org/pkg_ci.html
+          source: pkg_ci.Rmd
+        - url: https://devguide.ropensci.org/pkg_security.html
+          source: pkg_security.Rmd
+
+  - path: references/description-naming-deps.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/pkg_building.html
+          source: pkg_building.Rmd
+
+  - path: references/documentation.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/pkg_building.html
+          source: pkg_building.Rmd
+
+  - path: references/testing-style-ci.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/pkg_building.html
+          source: pkg_building.Rmd
+        - url: https://devguide.ropensci.org/pkg_ci.html
+          source: pkg_ci.Rmd
+
+  - path: references/security.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/pkg_security.html
+          source: pkg_security.Rmd

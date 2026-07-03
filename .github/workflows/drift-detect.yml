@@ -1,0 +1,72 @@
+name: drift-detect
+
+# Detect when the upstream rOpenSci manuals move ahead of the skills that
+# condense them. Deterministic detection (A) + hard equality on embedded
+# artifacts (D). Reconciliation (B) is a separate, human-reviewed workflow whose
+# LLM runs under the anti-over-acting guardrail in tools/reconcile-prompt.md.
+#
+# Each manifest pins a `track` (see skills/*/sources.yml): release-tracked repos
+# are compared against their latest release (the low-noise channel that can feed
+# the reconciler), main-tracked repos against HEAD (advisory, human-only). The
+# schedule is a poll — because release-tracked repos only surface drift when a
+# new release actually lands, a monthly cadence effectively means "on release".
+# A source repo can also trigger us immediately by sending a repository_dispatch
+# of type `upstream-release` (none do yet; the hook is here for when they do).
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # monthly, 1st at 06:00 UTC
+  repository_dispatch:
+    types: [upstream-release]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: drift-detect
+  cancel-in-progress: false
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # R, to match the repo's r-lib/actions convention and to share the
+      # detection logic with the R front end contemplated in #3.
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            any::yaml
+            any::gh
+            any::cli
+            any::glue
+
+      - name: Check skills against upstream manuals
+        id: check
+        env:
+          # gh::gh() reads GITHUB_PAT; public source repos only need read + rate limit
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        run: Rscript tools/drift-detect.R
+        # writes drift-report.md and sets drift=true|false in $GITHUB_OUTPUT
+
+      - name: Open or update the drift tracking issue
+        if: steps.check.outputs.drift == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          title="Skill drift: upstream manuals have moved"
+          existing=$(gh issue list --state open --label drift --json number \
+            --jq '.[0].number' || true)
+          if [ -n "${existing:-}" ]; then
+            gh issue edit "$existing" --body-file drift-report.md
+            gh issue comment "$existing" --body "Re-checked on $(date -u +%F): drift still present (report updated above)."
+          else
+            gh issue create --title "$title" --label drift --body-file drift-report.md
+          fi

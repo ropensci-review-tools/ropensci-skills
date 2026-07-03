@@ -1,0 +1,68 @@
+# Provenance + drift-detection manifest for the `package-review` skill.
+#
+# Each entry ties one file in this skill to the upstream manual section(s) it
+# condenses, pinned to the source-repo commit it was last synced against.
+# `drift-detect.yml` reads every skills/*/sources.yml and asks the source repo:
+# "did any of these source paths change since `ref`?" — deterministically.
+#
+# kind:
+#   prose      -> detection only; drift opens an issue, an LLM drafts a sync PR,
+#                 a human reviews. The condensed wording is curated, not mirrored.
+#   structured -> the file embeds a near-verbatim artifact (template / checklist /
+#                 bot commands). Drift also runs a hard equality check in CI.
+#
+# track: which upstream channel drift-detect watches. It compares `ref` against
+#   this channel's tip, NOT against every commit on main — noise there would
+#   prime the reconciler to make spurious edits (the exact drift we're avoiding).
+#   release -> latest published release/tag. Low-noise, so findings here are
+#              eligible for automated LLM reconciliation. Use for repos that cut
+#              releases regularly (ropensci/dev_guide).
+#   main    -> default-branch HEAD. For repos that don't cut usable releases
+#              (blog-guidance has none; stats-book's only tag is from 2021).
+#              Findings are ADVISORY / human-triage only and never auto-reconciled.
+#
+# ref: the last upstream commit this file is known to reflect. Bump it (and edit
+# the file if needed) whenever a sync PR lands. Baseline below = source HEAD at
+# manifest creation (2026-07-02); a human sync pass should confirm the current
+# text actually matches this ref before trusting it.
+
+skill: package-review
+
+files:
+  - path: SKILL.md
+    kind: prose
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/softwarereview_reviewer.html
+          source: softwarereview_reviewer.Rmd
+        - url: https://devguide.ropensci.org/reviewtemplate.html
+          source: reviewtemplate.Rmd
+        - url: https://devguide.ropensci.org/softwarereview_editor.html
+          source: softwarereview_editor.Rmd
+
+  - path: references/review-template.md
+    kind: structured
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/reviewtemplate.html
+          source: reviewtemplate.Rmd
+
+  - path: references/editor-checks.md
+    kind: structured
+    upstream:
+      repo: ropensci/dev_guide
+      track: release
+      ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
+      pages:
+        - url: https://devguide.ropensci.org/softwarereview_editor.html
+          source: softwarereview_editor.Rmd
+        - url: https://devguide.ropensci.org/editortemplate.html
+          source: editortemplate.Rmd
+        - url: https://devguide.ropensci.org/bot_cheatsheet.html
+          source: bot_cheatsheet.Rmd
