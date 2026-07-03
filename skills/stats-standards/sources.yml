@@ -15,6 +15,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/statistical-software-review-book
+      track: main # only release (v0.1.0) is from 2021; advisory + human-triage only
       ref: ec278d3a160de90179cac68ad93c976a65ef1b65
       pages:
         - url: https://stats-devguide.ropensci.org/standards.html
@@ -24,6 +25,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/statistical-software-review-book
+      track: main # only release (v0.1.0) is from 2021; advisory + human-triage only
       ref: ec278d3a160de90179cac68ad93c976a65ef1b65
       pages:
         - url: https://stats-devguide.ropensci.org/standards.html

@@ -10,6 +10,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/maintenance_collaboration.html
@@ -27,6 +28,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/maintenance_evolution.html
@@ -36,6 +38,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/maintenance_evolution.html

@@ -10,6 +10,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci-org/blog-guidance
+      track: main # no releases/tags upstream; advisory + human-triage only
       ref: 0ab8de392d686f9535f6536884be52980124b451
       pages:
         - url: https://blogguide.ropensci.org/authorcontent.html
@@ -25,6 +26,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci-org/blog-guidance
+      track: main # no releases/tags upstream; advisory + human-triage only
       ref: 0ab8de392d686f9535f6536884be52980124b451
       pages:
         - url: https://blogguide.ropensci.org/authortechnical.html

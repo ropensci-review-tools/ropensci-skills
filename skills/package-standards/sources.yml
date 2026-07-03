@@ -10,6 +10,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/pkg_building.html
@@ -23,6 +24,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/pkg_building.html
@@ -32,6 +34,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/pkg_building.html
@@ -41,6 +44,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/pkg_building.html
@@ -52,6 +56,7 @@ files:
     kind: prose
     upstream:
       repo: ropensci/dev_guide
+      track: release
       ref: cf072089211f9cfe9c0b0e280431b6b39f16e6a4
       pages:
         - url: https://devguide.ropensci.org/pkg_security.html
