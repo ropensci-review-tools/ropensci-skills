@@ -34,11 +34,15 @@ Implement the following as an immediate first step, noting that all code is
    in `srr_stats_categories()`, and keep a note of the exact category names
    chosen — Step 2 refers back to them.
 4. Make a sub-directory, `srr/` in current repository.
-5. For example categories "eda" and "ml", run
-   `x <- srr::srr_stats_checklist(c("eda", "ml"))`. The result, `x`, which is
-   also written to the system clipboard, is a checklist of all general and
-   category-specific standards which should be written to
-   `srr/srr-standards.md`.
+5. For example categories "eda" and "ml", run, as a single `Rscript -e`
+   call:
+   `Sys.setenv(NOCLIPR = "TRUE"); srr::srr_stats_checklist(c("eda", "ml"), filename = "srr/srr-standards.md")`.
+   `NOCLIPR=TRUE` is required — `Rscript` runs non-interactively, and without
+   it `srr_stats_checklist()` errors out trying to write to the system
+   clipboard instead of returning. Passing `filename` writes the checklist of
+   all general and category-specific standards directly to
+   `srr/srr-standards.md`; do not rely on the (still clipboard-directed)
+   return value.
 6. Download the full text of _General_ standards from
    https://github.com/ropensci/statistical-software-review-book/raw/refs/heads/main/standards/general.Rmd
    and save to `srr/general.Rmd`.
@@ -113,15 +117,15 @@ mostly doesn't apply to the package isn't really "fit for" that category.
 Every category's `.Rmd` groups its standards under broadly similar headings,
 even though exact wording varies (e.g. "Algorithms" vs. "Analytic
 Algorithms", "Return Results" vs. "Return Values", "Input Structures" vs.
-"Input Data Structures and Validation"). `srr/srr-standards-all.md` lists
-the checklists for all categories side by side and is the fastest way to see
-this shared shape — skim the section headings there for whichever
-category(ies) were identified in Step 1 before you start reading source, so
-you know what kind of standard to expect from each part of the codebase.
-The recurring pattern is roughly: Documentation → Input data/structures and
-validation → Pre-processing/transformation → Algorithms → Return
-results/values → Visualization (where applicable) → Testing. Use that
-pattern, not any single category's specific IDs, as your reading guide.
+"Input Data Structures and Validation"). `srr/srr-standards.md`, produced in
+Step 1, already lists these headings as Markdown headers per chosen
+category (run `grep -n "^## \|^### " srr/srr-standards.md` for a quick
+outline) — skim it before you start reading source, so you know what kind
+of standard to expect from each part of the codebase. The recurring pattern
+is roughly: Documentation → Input data/structures and validation →
+Pre-processing/transformation → Algorithms → Return results/values →
+Visualization (where applicable) → Testing. Use that pattern, not any
+single category's specific IDs, as your reading guide.
 
 With that structure in mind, build a working understanding of the package
 by reading (not exhaustively, but enough to ground every verdict in
