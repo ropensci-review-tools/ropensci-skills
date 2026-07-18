@@ -1,0 +1,6 @@
+{
+  "total_tokens": 70903,
+  "duration_ms": 546442,
+  "total_duration_seconds": 546.4,
+  "note": "tokens+duration from sub-agent completion telemetry"
+}

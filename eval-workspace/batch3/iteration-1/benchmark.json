@@ -1,0 +1,646 @@
+{
+  "metadata": {
+    "skill_name": "ropensci-skills (run-* action skills)",
+    "skill_path": "/Users/athanasm/workspace/ropensci/ropensci-skills",
+    "executor_model": "Claude Code general-purpose sub-agents (Opus 4.x)",
+    "timestamp": "2026-07-02T11:15:34.401153+00:00",
+    "evals_run": [
+      21,
+      22,
+      23,
+      20
+    ],
+    "runs_per_configuration": 1,
+    "target_package": "ggseg.formats (lean copy: R/ tests/ man/ DESCRIPTION, data-raw excluded)",
+    "method": "Each of 4 passes run with_skill and without_skill on its own isolated git-tracked copy of the target. with_skill agents read the pass SKILL.md + shared report-template.md from disk (skill-loaded equivalent) and follow the read-only rule; without_skill agents get only the task prompt. Reports graded by grade3.py regex assertions; tokens+duration from sub-agent completion telemetry.",
+    "grader_calibrations": "Two assertions broadened after inspection to reward genuine content regardless of phrasing (false negatives on BOTH/either config): test-audit 'actually ran the suite' now credits prose counts (N assertions / 0 fail-warn-skip), performance 'scaling risk' now credits super-linear/quadratic/O(n^2)."
+  },
+  "runs": [
+    {
+      "eval_id": 21,
+      "eval_name": "run-complexity",
+      "skill": "run-complexity",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 447.1,
+        "tokens": 64934,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Reports measured cyclomatic complexity per function",
+          "passed": true,
+          "evidence": "cyclomatic"
+        },
+        {
+          "text": "Measures more than one metric (LOC, nesting, or if/for counts)",
+          "passed": true,
+          "evidence": "LOC"
+        },
+        {
+          "text": "Builds or uses a static call-graph / duplication analysis",
+          "passed": true,
+          "evidence": "call-graph"
+        },
+        {
+          "text": "Cites concrete file/line evidence for hotspots",
+          "passed": true,
+          "evidence": "coercion.R:84"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": true,
+          "evidence": "# Prompt"
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": true,
+          "evidence": "run-complexity"
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": true,
+          "evidence": "No package files were modified"
+        },
+        {
+          "text": "Recommends simplifications that keep the user-facing surface unchanged",
+          "passed": true,
+          "evidence": "user-facing"
+        },
+        {
+          "text": "Confirms a behavioural finding with a runtime probe",
+          "passed": true,
+          "evidence": "runtime probe"
+        },
+        {
+          "text": "Recommends specific, concrete simplifications",
+          "passed": true,
+          "evidence": "refactor"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 21,
+      "eval_name": "run-complexity",
+      "skill": "run-complexity",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 5,
+        "failed": 5,
+        "total": 10,
+        "time_seconds": 489.9,
+        "tokens": 52460,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Reports measured cyclomatic complexity per function",
+          "passed": true,
+          "evidence": "cyclomatic"
+        },
+        {
+          "text": "Measures more than one metric (LOC, nesting, or if/for counts)",
+          "passed": true,
+          "evidence": "lines of code"
+        },
+        {
+          "text": "Builds or uses a static call-graph / duplication analysis",
+          "passed": true,
+          "evidence": "duplicat"
+        },
+        {
+          "text": "Cites concrete file/line evidence for hotspots",
+          "passed": true,
+          "evidence": "R/coercion.R:23"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Recommends simplifications that keep the user-facing surface unchanged",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Confirms a behavioural finding with a runtime probe",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Recommends specific, concrete simplifications",
+          "passed": true,
+          "evidence": "refactor"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 22,
+      "eval_name": "run-dependency-review",
+      "skill": "run-dependency-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 235.5,
+        "tokens": 53975,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Builds the recursive dependency tree with node/edge counts",
+          "passed": true,
+          "evidence": "recursive depend"
+        },
+        {
+          "text": "Separates prunable leaves from packages pinned by core deps",
+          "passed": true,
+          "evidence": "prunable"
+        },
+        {
+          "text": "Argues removal only counts if it prunes the install tree",
+          "passed": true,
+          "evidence": "Prune the tree"
+        },
+        {
+          "text": "Counts real usage (call sites) of imported functions",
+          "passed": true,
+          "evidence": "call site"
+        },
+        {
+          "text": "Assesses base-R feasibility of replacing a dependency",
+          "passed": true,
+          "evidence": "base-R"
+        },
+        {
+          "text": "Tiers recommendations (clear win / worth-doing / defer)",
+          "passed": true,
+          "evidence": "Tier 3"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": true,
+          "evidence": "# Prompt"
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": true,
+          "evidence": "run-dependency-review"
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": true,
+          "evidence": "No package files were modified"
+        },
+        {
+          "text": "Keeps deps whose removal buys nothing and says why",
+          "passed": true,
+          "evidence": "removal buys nothing"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 22,
+      "eval_name": "run-dependency-review",
+      "skill": "run-dependency-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 4,
+        "failed": 6,
+        "total": 10,
+        "time_seconds": 214.0,
+        "tokens": 45785,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Builds the recursive dependency tree with node/edge counts",
+          "passed": true,
+          "evidence": "recursive depend"
+        },
+        {
+          "text": "Separates prunable leaves from packages pinned by core deps",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Argues removal only counts if it prunes the install tree",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Counts real usage (call sites) of imported functions",
+          "passed": true,
+          "evidence": "call site"
+        },
+        {
+          "text": "Assesses base-R feasibility of replacing a dependency",
+          "passed": true,
+          "evidence": "Base-R"
+        },
+        {
+          "text": "Tiers recommendations (clear win / worth-doing / defer)",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Keeps deps whose removal buys nothing and says why",
+          "passed": true,
+          "evidence": "Keep** \u2014 core"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 23,
+      "eval_name": "run-performance-review",
+      "skill": "run-performance-review",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 607.3,
+        "tokens": 84297,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Traces the hot path / sketches the call chain",
+          "passed": true,
+          "evidence": "hot path"
+        },
+        {
+          "text": "Anchors on a real measurement (object.size, timing, or profiling)",
+          "passed": true,
+          "evidence": "object.size"
+        },
+        {
+          "text": "Distinguishes the persistent result from the transient peak",
+          "passed": true,
+          "evidence": "transient"
+        },
+        {
+          "text": "Extrapolates to large inputs with explicit multipliers",
+          "passed": true,
+          "evidence": "extrapolat"
+        },
+        {
+          "text": "Labels which figures are measured versus estimated",
+          "passed": true,
+          "evidence": "Estimat"
+        },
+        {
+          "text": "Flags a concrete scaling risk (super-linear time, memory-bound, truncation, no caching)",
+          "passed": true,
+          "evidence": "OOM"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": true,
+          "evidence": "# Prompt"
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": true,
+          "evidence": "run-performance-review"
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": true,
+          "evidence": "No package files were modified"
+        },
+        {
+          "text": "Gives recommendations plus caveats on the estimate",
+          "passed": true,
+          "evidence": "Recommend"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 23,
+      "eval_name": "run-performance-review",
+      "skill": "run-performance-review",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.7,
+        "passed": 7,
+        "failed": 3,
+        "total": 10,
+        "time_seconds": 616.8,
+        "tokens": 85371,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Traces the hot path / sketches the call chain",
+          "passed": true,
+          "evidence": "end-to-end"
+        },
+        {
+          "text": "Anchors on a real measurement (object.size, timing, or profiling)",
+          "passed": true,
+          "evidence": "object.size"
+        },
+        {
+          "text": "Distinguishes the persistent result from the transient peak",
+          "passed": true,
+          "evidence": "transient"
+        },
+        {
+          "text": "Extrapolates to large inputs with explicit multipliers",
+          "passed": true,
+          "evidence": "extrapolat"
+        },
+        {
+          "text": "Labels which figures are measured versus estimated",
+          "passed": true,
+          "evidence": "(extrapolated)"
+        },
+        {
+          "text": "Flags a concrete scaling risk (super-linear time, memory-bound, truncation, no caching)",
+          "passed": true,
+          "evidence": "quadratic"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Gives recommendations plus caveats on the estimate",
+          "passed": true,
+          "evidence": "Caveat"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 20,
+      "eval_name": "run-test-audit",
+      "skill": "run-test-audit",
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 10,
+        "failed": 0,
+        "total": 10,
+        "time_seconds": 546.4,
+        "tokens": 70903,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Actually ran the test suite and reports pass/fail counts",
+          "passed": true,
+          "evidence": "0 assertion"
+        },
+        {
+          "text": "Reports a measured coverage figure from covr",
+          "passed": true,
+          "evidence": "100.00 %** line cover"
+        },
+        {
+          "text": "Distinguishes coverage breadth from depth",
+          "passed": true,
+          "evidence": "breadth"
+        },
+        {
+          "text": "Cites concrete file/line or test-file evidence for findings",
+          "passed": true,
+          "evidence": "test-brain_mesh.R:30"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": true,
+          "evidence": "# Prompt"
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": true,
+          "evidence": "run-test-audit"
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": true,
+          "evidence": "No package files were modified"
+        },
+        {
+          "text": "Structures findings into coverage-gap / weak-test / flakiness buckets",
+          "passed": true,
+          "evidence": "coverage gap"
+        },
+        {
+          "text": "Includes a not-run list (skipped or unexecuted paths)",
+          "passed": true,
+          "evidence": "not run"
+        },
+        {
+          "text": "Gives a prioritised list of fixes",
+          "passed": true,
+          "evidence": "priorit"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 20,
+      "eval_name": "run-test-audit",
+      "skill": "run-test-audit",
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.4,
+        "passed": 4,
+        "failed": 6,
+        "total": 10,
+        "time_seconds": 680.3,
+        "tokens": 63117,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "Actually ran the test suite and reports pass/fail counts",
+          "passed": true,
+          "evidence": "925 assertions"
+        },
+        {
+          "text": "Reports a measured coverage figure from covr",
+          "passed": true,
+          "evidence": "100.00%** total line cover"
+        },
+        {
+          "text": "Distinguishes coverage breadth from depth",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Cites concrete file/line or test-file evidence for findings",
+          "passed": true,
+          "evidence": "test-sf_availability.R"
+        },
+        {
+          "text": "Reproduces the triggering prompt in the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Names the skill/method that produced the report",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "States no package files were modified (read-only)",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Structures findings into coverage-gap / weak-test / flakiness buckets",
+          "passed": false,
+          "evidence": ""
+        },
+        {
+          "text": "Includes a not-run list (skipped or unexecuted paths)",
+          "passed": true,
+          "evidence": "skipped test"
+        },
+        {
+          "text": "Gives a prioritised list of fixes",
+          "passed": false,
+          "evidence": ""
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 459.075,
+        "stddev": 163.0189,
+        "min": 235.5,
+        "max": 607.3
+      },
+      "tokens": {
+        "mean": 68527.25,
+        "stddev": 12636.0414,
+        "min": 53975,
+        "max": 84297
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.1414,
+        "min": 0.4,
+        "max": 0.7
+      },
+      "time_seconds": {
+        "mean": 500.25,
+        "stddev": 206.5979,
+        "min": 214.0,
+        "max": 680.3
+      },
+      "tokens": {
+        "mean": 61683.25,
+        "stddev": 17330.0109,
+        "min": 45785,
+        "max": 85371
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.50",
+      "time_seconds": "-41.2",
+      "tokens": "+6844"
+    }
+  },
+  "notes": [
+    "Assertion 'Reports measured cyclomatic complexity per function' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Measures more than one metric (LOC, nesting, or if/for counts)' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Builds or uses a static call-graph / duplication analysis' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Cites concrete file/line evidence for hotspots' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Recommends specific, concrete simplifications' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Builds the recursive dependency tree with node/edge counts' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Counts real usage (call sites) of imported functions' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Assesses base-R feasibility of replacing a dependency' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Keeps deps whose removal buys nothing and says why' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Traces the hot path / sketches the call chain' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Anchors on a real measurement (object.size, timing, or profiling)' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Distinguishes the persistent result from the transient peak' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Extrapolates to large inputs with explicit multipliers' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Labels which figures are measured versus estimated' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Flags a concrete scaling risk (super-linear time, memory-bound, truncation, no caching)' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Gives recommendations plus caveats on the estimate' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Actually ran the test suite and reports pass/fail counts' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Reports a measured coverage figure from covr' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Cites concrete file/line or test-file evidence for findings' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Assertion 'Includes a not-run list (skipped or unexecuted paths)' passes in BOTH configs - does not isolate rOpenSci-specific value.",
+    "Skill lifts pass rate by +50% on average (with=100%, without=50%); biggest single-eval gap is 'run-dependency-review' (+60%).",
+    "20 assertion(s) pass in BOTH configs - to the extent these match generic packaging vocabulary the benchmark understates the skill's rOpenSci-specific value.",
+    "Skill adds 6844 tokens vs baseline on average and runs 41s faster; baseline time/tokens vary run-to-run because without the skill the model explores/searches, while with it the model answers from grounded references.",
+    "Read-only discipline VERIFIED: all 8 package copies unmodified after the runs (git status clean), including baselines; the discriminating gap is that only with_skill DOCUMENTS the read-only guarantee and the rest of the transparency header (prompt/skill/method), which is what makes the report trustworthy and attachable to a public software-review issue.",
+    "Token cost note: with_skill averages +6844 tokens (~11%), partly the SKILL.md+template the agent reads that baseline does not; yet with_skill ran 41s faster on average."
+  ]
+}

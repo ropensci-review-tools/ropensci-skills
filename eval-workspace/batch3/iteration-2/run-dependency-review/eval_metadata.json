@@ -1,0 +1,18 @@
+{
+  "eval_id": 22,
+  "eval_name": "run-dependency-review",
+  "skill": "run-dependency-review",
+  "prompt": "You are reviewing the R package in the current working directory for an rOpenSci software-review issue. Analyse its dependencies and produce a report I can attach to the review issue. Tell me which dependencies are genuinely worth removing, and back every recommendation with evidence.",
+  "assertions": [
+    "Builds the recursive dependency tree with node/edge counts",
+    "Separates prunable leaves from packages pinned by core deps",
+    "Argues removal only counts if it prunes the install tree",
+    "Counts real usage (call sites) of imported functions",
+    "Assesses base-R feasibility of replacing a dependency",
+    "Tiers recommendations (clear win / worth-doing / defer)",
+    "Reproduces the triggering prompt in the report",
+    "Names the skill/method that produced the report",
+    "States no package files were modified (read-only)",
+    "Keeps deps whose removal buys nothing and says why"
+  ]
+}

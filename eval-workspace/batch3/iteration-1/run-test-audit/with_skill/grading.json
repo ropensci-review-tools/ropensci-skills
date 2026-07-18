@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Actually ran the test suite and reports pass/fail counts",
+      "passed": true,
+      "evidence": "0 assertion"
+    },
+    {
+      "text": "Reports a measured coverage figure from covr",
+      "passed": true,
+      "evidence": "100.00 %** line cover"
+    },
+    {
+      "text": "Distinguishes coverage breadth from depth",
+      "passed": true,
+      "evidence": "breadth"
+    },
+    {
+      "text": "Cites concrete file/line or test-file evidence for findings",
+      "passed": true,
+      "evidence": "test-brain_mesh.R:30"
+    },
+    {
+      "text": "Reproduces the triggering prompt in the report",
+      "passed": true,
+      "evidence": "# Prompt"
+    },
+    {
+      "text": "Names the skill/method that produced the report",
+      "passed": true,
+      "evidence": "run-test-audit"
+    },
+    {
+      "text": "States no package files were modified (read-only)",
+      "passed": true,
+      "evidence": "No package files were modified"
+    },
+    {
+      "text": "Structures findings into coverage-gap / weak-test / flakiness buckets",
+      "passed": true,
+      "evidence": "coverage gap"
+    },
+    {
+      "text": "Includes a not-run list (skipped or unexecuted paths)",
+      "passed": true,
+      "evidence": "not run"
+    },
+    {
+      "text": "Gives a prioritised list of fixes",
+      "passed": true,
+      "evidence": "priorit"
+    }
+  ],
+  "passed_count": 10,
+  "total": 10
+}

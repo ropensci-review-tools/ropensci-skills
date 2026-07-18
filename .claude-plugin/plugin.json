@@ -3,13 +3,13 @@
   "name": "ropensci-skills",
   "displayName": "rOpenSci Skills",
   "version": "1.0.0",
-  "description": "A composing suite of Agent Skills distilling rOpenSci's Developer Guide, Statistical Software Guide, and Blog Guide into on-demand guidance: build and audit packages against the standards, prepare and conduct peer review, apply the statistical standards, release, maintain, and blog the rOpenSci way.",
+  "description": "A composing suite of Agent Skills distilling rOpenSci's Developer Guide, Statistical Software Guide, and Blog Guide into on-demand guidance: build and audit packages against the standards, prepare and conduct peer review, apply the statistical standards, release, maintain, and blog the rOpenSci way — plus action skills that carry out review passes and emit transparent, reproducible reports.",
   "author": {
     "name": "Athanasia Monika Mowinckel",
     "email": "a.m.mowinckel@psykologi.uio.no"
   },
-  "homepage": "https://github.com/drmowinckels/ropensci-skills",
-  "repository": "https://github.com/drmowinckels/ropensci-skills",
+  "homepage": "https://github.com/ropensci-review-tools/ropensci-skills",
+  "repository": "https://github.com/ropensci-review-tools/ropensci-skills",
   "keywords": [
     "ropensci",
     "r",

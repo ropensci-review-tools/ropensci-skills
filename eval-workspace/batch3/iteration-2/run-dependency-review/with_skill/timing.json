@@ -1,0 +1,7 @@
+{
+  "total_tokens": 55580,
+  "duration_ms": 274057,
+  "total_duration_seconds": 274.0,
+  "tool_uses": 30,
+  "note": "iteration-2 (leaner shared report-template); tokens+duration from sub-agent completion telemetry"
+}

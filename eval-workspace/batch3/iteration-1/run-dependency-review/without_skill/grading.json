@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Builds the recursive dependency tree with node/edge counts",
+      "passed": true,
+      "evidence": "recursive depend"
+    },
+    {
+      "text": "Separates prunable leaves from packages pinned by core deps",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Argues removal only counts if it prunes the install tree",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Counts real usage (call sites) of imported functions",
+      "passed": true,
+      "evidence": "call site"
+    },
+    {
+      "text": "Assesses base-R feasibility of replacing a dependency",
+      "passed": true,
+      "evidence": "Base-R"
+    },
+    {
+      "text": "Tiers recommendations (clear win / worth-doing / defer)",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Reproduces the triggering prompt in the report",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Names the skill/method that produced the report",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "States no package files were modified (read-only)",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Keeps deps whose removal buys nothing and says why",
+      "passed": true,
+      "evidence": "Keep** \u2014 core"
+    }
+  ],
+  "passed_count": 4,
+  "total": 10
+}

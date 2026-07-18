@@ -1,0 +1,18 @@
+{
+  "eval_id": 23,
+  "eval_name": "run-performance-review",
+  "skill": "run-performance-review",
+  "prompt": "You are reviewing the R package in the current working directory for an rOpenSci software-review issue. Analyse its performance and memory behaviour and produce a report I can attach to the review issue. Anchor claims on real measurements and be explicit about what is measured versus extrapolated.",
+  "assertions": [
+    "Traces the hot path / sketches the call chain",
+    "Anchors on a real measurement (object.size, timing, or profiling)",
+    "Distinguishes the persistent result from the transient peak",
+    "Extrapolates to large inputs with explicit multipliers",
+    "Labels which figures are measured versus estimated",
+    "Flags a concrete scaling risk (super-linear time, memory-bound, truncation, no caching)",
+    "Reproduces the triggering prompt in the report",
+    "Names the skill/method that produced the report",
+    "States no package files were modified (read-only)",
+    "Gives recommendations plus caveats on the estimate"
+  ]
+}
