@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Reports measured cyclomatic complexity per function",
+      "passed": true,
+      "evidence": "cyclomatic"
+    },
+    {
+      "text": "Measures more than one metric (LOC, nesting, or if/for counts)",
+      "passed": true,
+      "evidence": "LOC"
+    },
+    {
+      "text": "Builds or uses a static call-graph / duplication analysis",
+      "passed": true,
+      "evidence": "call-graph"
+    },
+    {
+      "text": "Cites concrete file/line evidence for hotspots",
+      "passed": true,
+      "evidence": "atlas_accessors.R:170"
+    },
+    {
+      "text": "Reproduces the triggering prompt in the report",
+      "passed": true,
+      "evidence": "# Prompt"
+    },
+    {
+      "text": "Names the skill/method that produced the report",
+      "passed": true,
+      "evidence": "run-complexity"
+    },
+    {
+      "text": "States no package files were modified (read-only)",
+      "passed": true,
+      "evidence": "No package files were modified"
+    },
+    {
+      "text": "Recommends simplifications that keep the user-facing surface unchanged",
+      "passed": true,
+      "evidence": "user-facing"
+    },
+    {
+      "text": "Confirms a behavioural finding with a runtime probe",
+      "passed": true,
+      "evidence": "runtime probe"
+    },
+    {
+      "text": "Recommends specific, concrete simplifications",
+      "passed": true,
+      "evidence": "refactor"
+    }
+  ],
+  "passed_count": 10,
+  "total": 10
+}

@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Traces the hot path / sketches the call chain",
+      "passed": true,
+      "evidence": "hot path"
+    },
+    {
+      "text": "Anchors on a real measurement (object.size, timing, or profiling)",
+      "passed": true,
+      "evidence": "object.size"
+    },
+    {
+      "text": "Distinguishes the persistent result from the transient peak",
+      "passed": true,
+      "evidence": "transient"
+    },
+    {
+      "text": "Extrapolates to large inputs with explicit multipliers",
+      "passed": true,
+      "evidence": "extrapolat"
+    },
+    {
+      "text": "Labels which figures are measured versus estimated",
+      "passed": true,
+      "evidence": "estimat"
+    },
+    {
+      "text": "Flags a concrete scaling risk (super-linear time, memory-bound, truncation, no caching)",
+      "passed": true,
+      "evidence": "OOM"
+    },
+    {
+      "text": "Reproduces the triggering prompt in the report",
+      "passed": true,
+      "evidence": "# Prompt"
+    },
+    {
+      "text": "Names the skill/method that produced the report",
+      "passed": true,
+      "evidence": "run-performance-review"
+    },
+    {
+      "text": "States no package files were modified (read-only)",
+      "passed": true,
+      "evidence": "No package files were modified"
+    },
+    {
+      "text": "Gives recommendations plus caveats on the estimate",
+      "passed": true,
+      "evidence": "Caveat"
+    }
+  ],
+  "passed_count": 10,
+  "total": 10
+}

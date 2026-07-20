@@ -1,0 +1,56 @@
+{
+  "expectations": [
+    {
+      "text": "Actually ran the test suite and reports pass/fail counts",
+      "passed": true,
+      "evidence": "925 assertions"
+    },
+    {
+      "text": "Reports a measured coverage figure from covr",
+      "passed": true,
+      "evidence": "100.00%** total line cover"
+    },
+    {
+      "text": "Distinguishes coverage breadth from depth",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Cites concrete file/line or test-file evidence for findings",
+      "passed": true,
+      "evidence": "test-sf_availability.R"
+    },
+    {
+      "text": "Reproduces the triggering prompt in the report",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Names the skill/method that produced the report",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "States no package files were modified (read-only)",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Structures findings into coverage-gap / weak-test / flakiness buckets",
+      "passed": false,
+      "evidence": ""
+    },
+    {
+      "text": "Includes a not-run list (skipped or unexecuted paths)",
+      "passed": true,
+      "evidence": "skipped test"
+    },
+    {
+      "text": "Gives a prioritised list of fixes",
+      "passed": false,
+      "evidence": ""
+    }
+  ],
+  "passed_count": 4,
+  "total": 10
+}

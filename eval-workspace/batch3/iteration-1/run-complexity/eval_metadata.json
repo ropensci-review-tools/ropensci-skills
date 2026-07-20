@@ -1,0 +1,18 @@
+{
+  "eval_id": 21,
+  "eval_name": "run-complexity",
+  "skill": "run-complexity",
+  "prompt": "You are reviewing the R package in the current working directory for an rOpenSci software-review issue. Analyse its code complexity and produce a report I can attach to the review issue. I want to trust the report, so measure rather than eyeball, and back every finding with evidence.",
+  "assertions": [
+    "Reports measured cyclomatic complexity per function",
+    "Measures more than one metric (LOC, nesting, or if/for counts)",
+    "Builds or uses a static call-graph / duplication analysis",
+    "Cites concrete file/line evidence for hotspots",
+    "Reproduces the triggering prompt in the report",
+    "Names the skill/method that produced the report",
+    "States no package files were modified (read-only)",
+    "Recommends simplifications that keep the user-facing surface unchanged",
+    "Confirms a behavioural finding with a runtime probe",
+    "Recommends specific, concrete simplifications"
+  ]
+}

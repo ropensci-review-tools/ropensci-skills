@@ -1,0 +1,18 @@
+{
+  "eval_id": 20,
+  "eval_name": "run-test-audit",
+  "skill": "run-test-audit",
+  "prompt": "You are reviewing the R package in the current working directory for an rOpenSci software-review issue. Audit its test suite and produce a report I can attach to the review issue. I want to trust the report, so make it reproducible and back every finding with evidence.",
+  "assertions": [
+    "Actually ran the test suite and reports pass/fail counts",
+    "Reports a measured coverage figure from covr",
+    "Distinguishes coverage breadth from depth",
+    "Cites concrete file/line or test-file evidence for findings",
+    "Reproduces the triggering prompt in the report",
+    "Names the skill/method that produced the report",
+    "States no package files were modified (read-only)",
+    "Structures findings into coverage-gap / weak-test / flakiness buckets",
+    "Includes a not-run list (skipped or unexecuted paths)",
+    "Gives a prioritised list of fixes"
+  ]
+}

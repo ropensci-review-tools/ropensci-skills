@@ -11,7 +11,7 @@
     {
       "name": "ropensci-skills",
       "source": "./",
-      "description": "Seven composing skills for rOpenSci-compliant R package development: package-standards, peer-review-author, package-review, stats-standards, package-release, package-maintenance, and blog-post."
+      "description": "Twelve composing skills for rOpenSci-compliant R package development: the context skills package-standards, peer-review-author, package-review, stats-standards, package-release, package-maintenance, and blog-post, plus the action skills run-package-review, run-test-audit, run-complexity, run-dependency-review, and run-performance-review that carry out review passes and emit transparent reports."
     }
   ]
 }
